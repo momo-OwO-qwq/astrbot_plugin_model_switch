@@ -1,0 +1,109 @@
+{
+  "enabled": {
+    "description": "启用模型调度",
+    "hint": "关闭后不再自动切换，/model 命令仍可用",
+    "type": "bool",
+    "default": true
+  },
+  "switch_policy": {
+    "description": "切换时机",
+    "hint": "idle 会等到会话空闲后再切，避免打断 prompt 缓存；immediate 到点立刻切",
+    "type": "string",
+    "options": ["idle", "immediate"],
+    "labels": ["空闲再切（推荐）", "到点立即切"],
+    "default": "idle"
+  },
+  "idle_minutes": {
+    "description": "空闲判定（分钟）",
+    "hint": "最近一条消息超过这个时间才算空闲，才会执行待切换",
+    "type": "int",
+    "default": 30,
+    "slider": { "min": 1, "max": 720, "step": 1 }
+  },
+  "max_defer_hours": {
+    "description": "最长延迟（小时）",
+    "hint": "活跃会话一直不空闲时，最多等这么久就强制切换；0 表示不限制",
+    "type": "int",
+    "default": 6,
+    "slider": { "min": 0, "max": 72, "step": 1 }
+  },
+  "baseline_provider": {
+    "description": "基线模型",
+    "hint": "所有计划都不命中时回到这个模型；留空则首次启动自动记录当前默认模型",
+    "type": "string",
+    "_special": "select_provider",
+    "default": ""
+  },
+  "timezone": {
+    "description": "时区",
+    "hint": "留空跟随 AstrBot 全局时区",
+    "type": "string",
+    "default": ""
+  },
+  "plans": {
+    "description": "切换计划",
+    "hint": "作用域越具体优先级越高：指定会话 > 群聊/私聊 > 全局。",
+    "type": "template_list",
+    "templates": {
+      "plan": {
+        "name": "切换计划",
+        "display_item": "name",
+        "items": {
+          "name": {
+            "description": "名称",
+            "type": "string",
+            "default": ""
+          },
+          "enabled": {
+            "description": "启用",
+            "type": "bool",
+            "default": true
+          },
+          "scope": {
+            "description": "作用域",
+            "type": "string",
+            "options": ["global", "group", "private", "session"],
+            "labels": ["全局", "群聊", "私聊", "指定会话"],
+            "default": "global"
+          },
+          "session": {
+            "description": "会话 umo",
+            "hint": "仅 scope=session 时填写，可用 /model status 查看当前会话 umo",
+            "type": "string",
+            "default": ""
+          },
+          "provider": {
+            "description": "模型",
+            "type": "string",
+            "_special": "select_provider",
+            "default": ""
+          },
+          "start": {
+            "description": "开始时间",
+            "hint": "HH:MM。留空表示常驻；只填开始时间表示到点后一直生效",
+            "type": "string",
+            "default": ""
+          },
+          "end": {
+            "description": "结束时间",
+            "hint": "HH:MM。留空表示从开始时间起一直生效；跨夜直接填 23:00-07:00",
+            "type": "string",
+            "default": ""
+          },
+          "weekdays": {
+            "description": "生效星期",
+            "hint": "留空=每天；可写 1-5、6,7、mon-fri",
+            "type": "string",
+            "default": ""
+          },
+          "priority": {
+            "description": "优先级",
+            "hint": "同一作用域内数字大的先命中",
+            "type": "int",
+            "default": 0
+          }
+        }
+      }
+    }
+  }
+}
