@@ -4,5 +4,5 @@ desc: 按时间段和会话场景自动切换模型，空闲再切以保留 prom
 short_desc: 定时切模型，省 token
 version: 0.1.0
 author: momo-OwO-qwq
-repo: https://github.com/momo-OwO-qwq/momo-OwO-qwq
+repo: https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch
 astrbot_version: ">=4.13.0,<5.0.0"
