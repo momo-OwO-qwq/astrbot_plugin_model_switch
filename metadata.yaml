@@ -11,7 +11,7 @@ desc: |
   - 命令：/model、/model plan、/model pause、/model resume、/model apply
 
   不重复 AstrBot 已有能力：手动切换继续用 /provider，故障回退继续用 fallback_provider_ids。
-version: 0.1.2
+version: 0.1.3
 author: momo-OwO-qwq
 repo: https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch
 social_link: https://github.com/momo-OwO-qwq
