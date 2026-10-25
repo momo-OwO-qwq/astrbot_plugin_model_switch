@@ -1,6 +1,8 @@
-# astrbot_plugin_model_switch
+# astrbot_plugin_model_scheduler
 
 [GitHub 仓库](https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch) · AstrBot 插件：按时间段 / 会话场景自动切换模型，省 token。
+
+> 仓库名是 `astrbot_plugin_model_switch`，插件标识（`metadata.yaml` 的 `name`）是 `astrbot_plugin_model_scheduler`，安装目录建议用后者。
 
 按时间段 / 会话场景自动切换模型。只补 AstrBot 缺的三件事：
 
@@ -14,7 +16,7 @@
 
 ```bash
 cd AstrBot/data/plugins
-git clone https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch.git
+git clone https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch.git astrbot_plugin_model_scheduler
 ```
 
 重启 AstrBot，或在 WebUI 插件页重载。也可以把目录打包成 zip 后从插件页上传。
