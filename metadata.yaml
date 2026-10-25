@@ -1,8 +1,27 @@
 name: astrbot_plugin_model_switch
 display_name: 模型调度
-desc: 按时间段和会话场景自动切换模型，空闲再切以保留 prompt 缓存
-short_desc: 定时切模型，省 token
-version: 0.1.0
+short_desc: 按时段/群聊自动切模型，空闲再切省 token
+desc: |
+  按时间段或会话类型自动切换 LLM 模型，把贵的模型留给需要的时候，其余时间用便宜模型。
+
+  - 时间段规则：到点切换、区间保持、支持跨夜（如 23:00–07:00 用便宜模型）
+  - 场景分流：群聊用便宜模型、私聊用强模型，无需逐个群配 umo
+  - 空闲再切：会话活跃时不切，保留 prompt 缓存，减少缓存未命中的 token 开销
+  - 基线回落：计划结束自动回到基线模型，不覆盖你手动在 WebUI 改的默认模型
+  - 命令：/model、/model plan、/model pause、/model resume、/model apply
+
+  不重复 AstrBot 已有能力：手动切换继续用 /provider，故障回退继续用 fallback_provider_ids。
+version: 0.1.1
 author: momo-OwO-qwq
 repo: https://github.com/momo-OwO-qwq/astrbot_plugin_model_switch
+social_link: https://github.com/momo-OwO-qwq
+tags:
+  - 模型切换
+  - 定时任务
+  - 省token
+  - prompt缓存
+  - model-switch
+  - token-saving
+  - provider
+  - schedule
 astrbot_version: ">=4.13.0,<5.0.0"
